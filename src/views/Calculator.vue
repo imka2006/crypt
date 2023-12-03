@@ -56,7 +56,7 @@ import { ref } from 'vue'
 import { useStore } from 'vuex'
 import Block from '../components/Block.vue'
 const name = ref('')
-const money = ref(1000)
+const money = ref()
 const time = ref('')
 const percent = ref('')
 const id = ref(0)
