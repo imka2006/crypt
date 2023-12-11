@@ -11,41 +11,8 @@
         </form>
         <Block v-for="inner in coin" :key="inner.id" :inner="inner" />
 
-        <template v-if="store.state.allData.reduce((accumulator, currentValue) => {
-          return accumulator + currentValue.money;
-        }, 0) >= store.state.allData.reduce((accumulator, currentValue) => {
-          return accumulator + currentValue.nested;
-        }, 0)">
-          обящяя прибыль со всех монет: {{ store.state.allData.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.money;
-          }, 0) }}
-        </template>
-        <template v-else>
-          обящий убыток со всех монет: {{ store.state.allData.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.money;
-          }, 0) }}
-        </template>
-        <br />
-        <br />
-        <template v-if="store.state.allData.reduce((accumulator, currentValue) => {
-          return accumulator + currentValue.cleanMoney;
-        }, 0) >= 0">
-          обящяя чистая прибыль со всех монет: {{ store.state.allData.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.cleanMoney;
-          }, 0) }}
-        </template>
-        <template v-else>
-          общий чистый убыток со всех монет: {{ store.state.allData.reduce((accumulator, currentValue) => {
-            return accumulator + currentValue.cleanMoney;
-          }, 0) }}
-        </template>
-
-        <br />
-        <br />
-
-        вложено: {{ store.state.allData.reduce((accumulator, currentValue) => {
-          return accumulator + currentValue.nested;
-        }, 0) }}
+        <AllProfit />
+        
       </div>
     </div>
   </section>
@@ -55,8 +22,9 @@
 import { onMounted, ref } from 'vue'
 import { useStore } from 'vuex'
 import Block from '../components/Block.vue'
+import AllProfit from '../components/result/AllProfit.vue'
 const name = ref('')
-const money = ref('1000')
+const money = ref(1000)
 const time = ref('mounth')
 const percent = ref('')
 const id = ref(0)
